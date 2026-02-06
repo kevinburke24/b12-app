@@ -10,7 +10,7 @@ URL="https://b12.io/apply/submission"
 
 def main():
     payload = {
-        "action_run_link": os.enviorn["ACTION_RUN_LINK"],
+        "action_run_link": os.environ["ACTION_RUN_LINK"],
         "email": "myburkek@gmail.com",
         "name": "Kevin Burke",
         "repository_link": "https://github.com/kevinburke24/b12-app",
