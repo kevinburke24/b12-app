@@ -28,7 +28,7 @@ def main():
     signature = hmac.new(
         SIGNING_SECRET,
         body,
-        hashlib.sha25,
+        hashlib.sha256,
     ).hexdigest()
 
     headers = {
@@ -40,7 +40,7 @@ def main():
     response.raise_for_status()
 
     data = response.json()
-    print(response)
+    print(data["receipt"])
 
 if __name__ == "__main__":
     main()
