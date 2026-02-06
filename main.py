@@ -46,8 +46,6 @@ def main():
         headers=headers,
     )
 
-
-    response = requests.post(URL, data=body, headers=headers,)
     response.raise_for_status()
 
     data = response.json()
