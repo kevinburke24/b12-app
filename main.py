@@ -1,4 +1,5 @@
 import datetime
+import timezone
 import json
 import requests
 import hmac
@@ -14,7 +15,7 @@ def main():
         "name": "Kevin Burke",
         "repository_link": "https://github.com/kevinburke24/b12-app",
         "resume_link": "https://drive.google.com/file/d/1cKObCmppjWJeArQOPn-PQlIGuLNJEtlf/view?usp=sharing",
-        "timestamp": datetime.datatime.utcnow().isoformat(timespec="milliseconds") + "Z",
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="milliseconds") + "Z",
     }
 
     body = json.dumps(
