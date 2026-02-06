@@ -32,7 +32,7 @@ jobs:
           pip install requests
       - name: run submission
         env:
-          RUN_LINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ACTION_RUN_LINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           sed -i "s|YOUR_RUN_ID|${{ github.run_id }}|g" main.py
           sed -i "s|kevinburke24/b12-app|${{ github.repository }}|g" main.py

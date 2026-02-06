@@ -1,5 +1,5 @@
 import datetime
-import timezone
+import os
 import json
 import requests
 import hmac
@@ -10,7 +10,7 @@ URL="https://b12.io/apply/submission"
 
 def main():
     payload = {
-        "action_run_link": "https://github.com/YOUR_USERNAME/YOUR_REPO/actions/runs/YOUR_RUN_ID",
+        "action_run_link": os.enviorn["ACTION_RUN_LINK"],
         "email": "myburkek@gmail.com",
         "name": "Kevin Burke",
         "repository_link": "https://github.com/kevinburke24/b12-app",
