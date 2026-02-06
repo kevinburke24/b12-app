@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, UTC
 import os
 import json
 import requests
@@ -9,7 +9,7 @@ SIGNING_SECRET=b"hello-from-b12"
 URL="https://b12.io/apply/submission"
 
 def iso_timestamp():
-    return datetime.datetime.utcnow().isoformat(timespec="milliseconds") + "Z"
+    return datetime.now(UTC).isoformat(timespec="milliseconds") + "Z"
 
 
 def main():
