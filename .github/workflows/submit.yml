@@ -1,39 +1,29 @@
-# This is a basic workflow to help you get started with Actions
+name: B12 application
 
-name: B12 Application
-
-# Controls when the workflow will run
 on:
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   submit:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # Runs a set of commands using the runners shell
       - name: Install dependencies
         run: |
           pip install requests
-      - name: run submission
+
+      - name: Run submission script
         env:
           ACTION_RUN_LINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          sed -i "s|YOUR_RUN_ID|${{ github.run_id }}|g" main.py
-          sed -i "s|kevinburke24/b12-app|${{ github.repository }}|g" main.py
-          python main.py
+          sed -i "s|YOUR_RUN_ID|${{ github.run_id }}|g" submit.py
+          sed -i "s|YOUR_USERNAME/YOUR_REPO|${{ github.repository }}|g" submit.py
+          python submit.py

@@ -11,7 +11,7 @@ URL="https://b12.io/apply/submission"
 def iso_timestamp():
     return datetime.now(UTC).isoformat(timespec="milliseconds") + "Z"
 
-def main():
+def submit():
     payload = {
         "action_run_link": os.environ["ACTION_RUN_LINK"],
         "email": "myburkek@gmail.com",
@@ -51,4 +51,4 @@ def main():
     print(data["receipt"])
 
 if __name__ == "__main__":
-    main()
+    submit()
