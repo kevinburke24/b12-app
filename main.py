@@ -5,12 +5,11 @@ import requests
 import hmac
 import hashlib
 
-SIGNING_SECRET=b"hello-from-b12"
+SIGNING_SECRET=b"hello-there-from-b12"
 URL="https://b12.io/apply/submission"
 
 def iso_timestamp():
     return datetime.now(UTC).isoformat(timespec="milliseconds") + "Z"
-
 
 def main():
     payload = {
@@ -42,7 +41,7 @@ def main():
 
     response = requests.post(
         URL,
-        data=body,   # ← MUST be the same `body`
+        data=body,
         headers=headers,
     )
 
