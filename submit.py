@@ -1,4 +1,4 @@
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 import os
 import json
 import requests
@@ -9,7 +9,7 @@ SIGNING_SECRET=b"hello-there-from-b12"
 URL="https://b12.io/apply/submission"
 
 def iso_timestamp():
-    return datetime.now(UTC).isoformat(timespec="milliseconds") + "Z"
+    return datetime.utcnow().isoformat(timespec="milliseconds") + "Z"
 
 def submit():
     payload = {
@@ -20,6 +20,8 @@ def submit():
         "resume_link": "https://drive.google.com/file/d/1cKObCmppjWJeArQOPn-PQlIGuLNJEtlf/view?usp=sharing",
         "timestamp": iso_timestamp(),
     }
+
+    print(iso_timestamp())
 
     body = json.dumps(
         payload,
@@ -48,7 +50,7 @@ def submit():
     response.raise_for_status()
 
     data = response.json()
-    print(data["receipt"])
+    print("Receipt: ", data["receipt"])
 
 if __name__ == "__main__":
     submit()
